@@ -3,20 +3,20 @@
 	# do something here
 #}
 
-## arg 1:  the new package version
-#post_install() {
-    # do something here
-#}
+# arg 1:  the new package version
+post_install() {
+  systemctl enable --now lactd
+}
 
 ## arg 2:  the old package version
 #pre_upgrade() {
 	# do something here
 #}
 
-## arg 2:  the old package version
-#post_upgrade() {
-	#post_install
-#}
+# arg 2:  the old package version
+post_upgrade() {
+	post_install
+}
 
 ## arg 1:  the old package version
 #pre_remove() {
@@ -24,7 +24,6 @@
 #}
 
 ## arg 1:  the old package version
-#post_remove() {
-	# do something here
-#}
- 
+post_remove() {
+  systemctl disable --now lactd
+}
